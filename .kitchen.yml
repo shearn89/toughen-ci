@@ -11,7 +11,7 @@ verifier:
     name: inspec
 
 platforms:
-    - name: centos-7.1
+    - name: puppetlabs/centos-7.2-64-puppet
 
 suites:
     - name: default
