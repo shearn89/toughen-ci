@@ -1,0 +1,19 @@
+---
+driver:
+    name: vagrant
+
+provisioner:
+    name: puppet_apply
+    require_chef_for_busser: false
+    manifests_path: manifests
+
+verifier:
+    name: inspec
+
+platforms:
+    - name: centos-7.1
+
+suites:
+    - name: default
+      provisioner:
+          manifest: site.pp
