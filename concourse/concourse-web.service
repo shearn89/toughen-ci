@@ -1,0 +1,8 @@
+[Unit]
+Description=concourse-web
+
+[Service]
+ExecStart=/usr/bin/concourse-web
+
+[Install]
+WantedBy=network-online.target
