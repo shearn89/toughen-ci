@@ -13,6 +13,9 @@ ssh-keygen -t rsa -f keys/session_signing_key -N ''
 
 cp keys/worker_key.pub keys/authorized_worker_keys
 
+sudo mkdir /etc/concourse
+sudo cp -r keys /etc/concourse/
+
 sudo apt install -y postgresql nginx
 sudo -u postgres createuser -s root
 sudo -u postgres psql -c 'create database etc;'
@@ -20,3 +23,8 @@ sudo psql -d atc -c '\password concourse;'
 
 sudo cp concourse-nginx.conf /etc/nginx/sites-available/
 sudo ln -s /etc/nginx/sites-available/ /etc/nginx/sites-enabled/
+
+sudo cp run_concourse.sh /usr/bin/concourse-web
+sudo cp concourse-web.service /etc/systemd/system/
+sudo systemctl daemon-reload
+
