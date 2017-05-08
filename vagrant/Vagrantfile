@@ -29,4 +29,6 @@ Vagrant.configure(2) do |config|
       module_path: "/home/vagrant/modules",
       working_directory: "/home/vagrant",
       options: "-v"
+  end
+
 end
