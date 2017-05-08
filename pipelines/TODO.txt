@@ -1,0 +1,9 @@
+https://github.com/starkandwayne/concourse-tutorial
+section 10
+
+need:
+* an image with all dependencies
+* script to run tests (or command)
+* source repo
+
+May need to create own docker image?

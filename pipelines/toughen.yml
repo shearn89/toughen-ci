@@ -1,0 +1,25 @@
+resources:
+- name: puppet-toughen
+  type: git
+  source: 
+    uri: https://github.com/shearn89/puppet-toughen.git
+
+jobs:
+- name: test-toughen
+  public: true
+  plan:
+  - get: puppet-toughen
+    trigger: true
+  - task: run-rake
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source: {repository: centos, tag: 7.3.1611}
+      inputs:
+      - name: puppet-toughen
+      run:
+        path: bash
+        args: 
+        - "-c"
+        - cd puppet-toughen && bundle install && bundle exec rake test
