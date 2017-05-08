@@ -24,8 +24,7 @@
     {
       "type": "shell",
       "scripts": [
-        "scripts/01-install-puppet.sh",
-        "scripts/02-get-release-tarball.sh"
+        "scripts/01-install-puppet.sh"
       ]
     }
   ],
