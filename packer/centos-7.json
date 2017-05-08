@@ -1,7 +1,7 @@
 {
   "push": {
     "name": "shearn89/centos7",
-    "vcs": true,
+    "vcs": true
   },
   "builders": [{
     "name": "centos73",
