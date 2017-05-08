@@ -22,13 +22,15 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", path: "scripts/03-deploy-modules.sh", name: "deploy modules", privileged: false
   config.vm.provision "file", source: "scripts/99-run-puppet.sh", destination: "run-puppet.sh"
   config.vm.provision "file", source: "site.pp", destination: "site.pp"
-  Vagrant.configure("2") do |c|
-    c.vm.provision "puppet",
-      manifest_file: "site.pp",
-      manifests_path: "/home/vagrant/",
-      module_path: "/home/vagrant/modules",
-      working_directory: "/home/vagrant",
-      options: "-v"
-  end
+
+  ## TODO: fix this
+  # Vagrant.configure("2") do |c|
+  #   c.vm.provision "puppet",
+  #     manifest_file: "site.pp",
+  #     manifests_path: "/home/vagrant/",
+  #     module_path: "/home/vagrant/modules",
+  #     working_directory: "/home/vagrant",
+  #     options: "-v"
+  # end
 
 end
