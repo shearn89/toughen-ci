@@ -1,8 +1,4 @@
 {
-  "push": {
-    "name": "shearn89/centos7",
-    "vcs": true
-  },
   "builders": [{
     "name": "centos73",
     "type": "virtualbox-iso",
@@ -43,7 +39,7 @@
     "artifact_type": "vagrant.box",
     "metadata": {
         "provider": "virtualbox",
-        "version": "0.1.1",
+        "version": "0.1.2",
         "description": "Centos 7 with a CIS compliant partition layout and Puppet preinstalled."
     }
   }]
