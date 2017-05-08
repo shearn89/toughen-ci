@@ -1,4 +1,8 @@
 {
+  "push": {
+    "name": "shearn89/centos7",
+    "vcs": true,
+  },
   "builders": [{
     "name": "centos73",
     "type": "virtualbox-iso",
@@ -11,20 +15,21 @@
     "ssh_password": "vagrant",
     "shutdown_command": "sudo -S shutdown -P now",
     "boot_command": "<up><tab> ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/kickstart.cfg<enter>",
-    "disk_size": "30000",
-    "guest_additions_mode": "disable",
+    "disk_size": "100000",
+    "guest_additions_mode": "attach",
     "guest_additions_url": "",
     "http_directory": "http",
     "output_directory": "builds",
     "vboxmanage": [
-      ["modifyvm", "{{.Name}}", "--memory", "4096"],
-      ["modifyvm", "{{.Name}}", "--cpus", "2"]
+      ["modifyvm", "{{.Name}}", "--memory", "1024"],
+      ["modifyvm", "{{.Name}}", "--cpus", "1"]
     ]
   }],
   "provisioners": [
     {
       "type": "shell",
       "scripts": [
+        "scripts/00-setup-basebox.sh",
         "scripts/01-install-puppet.sh"
       ]
     }
@@ -32,14 +37,5 @@
   "post-processors": [{
     "type": "vagrant",
     "output": "toughen_{{.BuildName}}_{{.Provider}}.box"
-  },{
-    "type": "atlas",
-    "artifact": "shearn89/centos7",
-    "artifact_type": "vagrant.box",
-    "metadata": {
-        "provider": "virtualbox",
-        "version": "0.1.0",
-        "description": "Centos 7 with a CIS compliant partition layout and Puppet preinstalled."
-    }
   }]
 }
