@@ -1,0 +1,33 @@
+{
+  "builders": [{
+    "type": "virtualbox-iso",
+    "guest_os_type": "RedHat_64",
+    "iso_url": "http://mirrors.ukfast.co.uk/sites/ftp.centos.org/7/isos/x86_64/CentOS-7-x86_64-Minimal-1611.iso",
+    "iso_checksum": "d2ec6cfa7cf6d89e484aa2d9f830517c",
+    "iso_checksum_type": "md5",
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
+    "shutdown_command": "sudo -S shutdown -P now",
+    "boot_command": "<up><tab> ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/kickstart.cfg<enter>",
+    "disk_size": "30000",
+    "guest_additions_mode": "disable",
+    "guest_additions_url": "",
+    "http_directory": "http",
+    "output_directory": "builds",
+    "vboxmanage": [
+      ["modifyvm", "{{.Name}}", "--memory", "4096"],
+      ["modifyvm", "{{.Name}}", "--cpus", "2"]
+    ]
+  }],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "sudo yum -y update",
+        "sudo rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm",
+        "sudo yum install -y puppet"
+      ]
+    }
+  ],
+  "post-processors": ["vagrant"]
+}
