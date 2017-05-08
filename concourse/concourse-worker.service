@@ -1,0 +1,11 @@
+[Unit]
+Description=concourse-web
+After=network.target
+Wants=concourse-web.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/concourse-worker
+
+[Install]
+WantedBy=multi-user.target
