@@ -4,11 +4,7 @@
 Vagrant.configure(2) do |config|
   config.vm.box = "shearn89/centos7"
 
-  # config.vm.box = "toughen_centos73_virtualbox-iso"
-  # config.vm.box_check_update = false
-
   # config.vm.network "forwarded_port", guest: 80, host: 8080
-
   # config.vm.network "private_network", ip: "192.168.33.10"
   # config.vm.network "public_network"
 
@@ -18,6 +14,8 @@ Vagrant.configure(2) do |config|
     vb.memory = "4096"
   end
 
-  config.vm.provision "shell", inline: "sudo yum update -y"
-  config.vm.provision "shell", path: "scripts/02-get-release-tarball.sh", name: "download toughen release"
+  config.vm.provision "shell", inline: "yum update -y"
+  config.vm.provision "shell", path: "scripts/01-setup-r10k.sh", name: "configure r10k"
+  config.vm.provision "shell", path: "scripts/02-setup-scanner.sh", name: "install oscap scanner"
+  # config.vm.provision "shell", path: "scripts/03-run-puppet.sh", name: "run puppet"
 end
