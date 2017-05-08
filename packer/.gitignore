@@ -1,2 +1,3 @@
 *.box
+setenv
 .vagrant/

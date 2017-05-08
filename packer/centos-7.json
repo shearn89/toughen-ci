@@ -32,5 +32,14 @@
   "post-processors": [{
     "type": "vagrant",
     "output": "toughen_{{.BuildName}}_{{.Provider}}.box"
+  },{
+    "type": "atlas",
+    "artifact": "shearn89/centos7",
+    "artifact_type": "vagrant.box",
+    "metadata": {
+        "provider": "virtualbox",
+        "version": "0.1.0",
+        "description": "Centos 7 with a CIS compliant partition layout and Puppet preinstalled."
+    }
   }]
 }
