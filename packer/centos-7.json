@@ -3,6 +3,7 @@
     "name": "centos73",
     "type": "virtualbox-iso",
     "guest_os_type": "RedHat_64",
+    "headless": true,
     "iso_url": "http://mirrors.ukfast.co.uk/sites/ftp.centos.org/7/isos/x86_64/CentOS-7-x86_64-Minimal-1611.iso",
     "iso_checksum": "d2ec6cfa7cf6d89e484aa2d9f830517c",
     "iso_checksum_type": "md5",
