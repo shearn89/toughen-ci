@@ -6,6 +6,8 @@ then
     exit 1
 fi
 
+hostname-ctl set-hostname vagrant.local.net
+
 yum install -y ruby rubygems git
 echo 'gem: --no-document' > /etc/gemrc
 gem install r10k
