@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash
 
 curl -L -O https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub
 mkdir -m 0700 .ssh

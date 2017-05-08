@@ -12,12 +12,12 @@ Vagrant.configure(2) do |config|
   # config.vm.network "private_network", ip: "192.168.33.10"
   # config.vm.network "public_network"
 
-  # config.vm.synced_folder "../data", "/vagrant_data"
+  config.vm.synced_folder "./reports", "/home/vagrant/reports"
 
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "4096"
   end
 
-  config.vm.provision "shell", path: "scripts/01-install-puppet.sh", name: "install puppet"
+  config.vm.provision "shell", inline: "sudo yum update -y"
   config.vm.provision "shell", path: "scripts/02-get-release-tarball.sh", name: "download toughen release"
 end
