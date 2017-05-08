@@ -6,6 +6,6 @@ then
     exit 1
 fi
 
-yum install -y ruby rubygems
+yum install -y ruby rubygems git
 echo 'gem: --no-document' > /etc/gemrc
 gem install r10k

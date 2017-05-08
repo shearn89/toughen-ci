@@ -1,12 +1,11 @@
 #!/bin/bash
 
-if [[ $EUID != 0 ]]
-then
-    echo 'must run as root'
-    exit 1
-fi
-
+echo 'checking puppetfile syntax'
+r10k puppetfile check
+echo 'purging old modules'
 r10k puppetfile purge
+echo 'installing modules'
 r10k puppetfile install
 
-puppet apply
+echo 'setup complete'
+# puppet apply
