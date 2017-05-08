@@ -1,0 +1,3 @@
+mod 'shearn89/toughen',
+    :git => 'https://github.com/shearn89/puppet-toughen',
+    :branch => 'develop'
