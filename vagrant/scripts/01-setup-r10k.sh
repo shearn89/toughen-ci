@@ -6,7 +6,7 @@ then
     exit 1
 fi
 
-hostname-ctl set-hostname vagrant.local.net
+hostnamectl set-hostname vagrant.local.net
 
 yum install -y ruby rubygems git
 echo 'gem: --no-document' > /etc/gemrc
