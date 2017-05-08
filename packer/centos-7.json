@@ -1,5 +1,6 @@
 {
   "builders": [{
+    "name": "centos73",
     "type": "virtualbox-iso",
     "guest_os_type": "RedHat_64",
     "iso_url": "http://mirrors.ukfast.co.uk/sites/ftp.centos.org/7/isos/x86_64/CentOS-7-x86_64-Minimal-1611.iso",
@@ -22,12 +23,14 @@
   "provisioners": [
     {
       "type": "shell",
-      "inline": [
-        "sudo yum -y update",
-        "sudo rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm",
-        "sudo yum install -y puppet"
+      "scripts": [
+        "scripts/01-install-puppet.sh",
+        "scripts/02-get-release-tarball.sh"
       ]
     }
   ],
-  "post-processors": ["vagrant"]
+  "post-processors": [{
+    "type": "vagrant",
+    "output": "toughen_{{.BuildName}}_{{.Provider}}.box"
+  }]
 }
