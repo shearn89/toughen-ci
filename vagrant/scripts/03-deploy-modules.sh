@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo 'purging local repo dir'
+rm -rf ~/modules/toughen
+
 echo 'checking puppetfile syntax'
 r10k puppetfile check
 echo 'purging old modules'
