@@ -18,9 +18,10 @@ jobs:
 - name: build-images
   plan:
     - get: ci-code
+      trigger: true
     - put: toughen-centos
       params:
-        build: toughen-centos/concourse/dockerfiles/centos-Dockerfile
+        dockerfile: toughen-centos/concourse/dockerfiles/centos-Dockerfile
 
 - name: run-tests
   plan:
