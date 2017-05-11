@@ -18,15 +18,15 @@ jobs:
 - name: build-images
   plan:
     - get: ci-code
-    - put: centos-image
+    - put: toughen-centos
       params:
-        build: toughen-ci/concourse/dockerfiles/centos-Dockerfile
+        build: toughen-centos/concourse/dockerfiles/centos-Dockerfile
 
 - name: run-tests
   plan:
   - get: puppet-code
     trigger: true
-  - get: centos-image
+  - get: toughen-centos
     passed: [build-images]
   - task: run-rake
     config:
