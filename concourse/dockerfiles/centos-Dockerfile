@@ -1,0 +1,5 @@
+FROM centos:7.3.1611
+
+# Install gem and bundler
+RUN yum install -y rubygems
+RUN gem install bundler

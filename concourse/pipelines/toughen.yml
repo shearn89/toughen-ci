@@ -1,0 +1,41 @@
+resources:
+- name: ci-code
+  type: git
+  source: 
+    uri: https://github.com/shearn89/toughen-ci.git
+
+- name: puppet-code
+  type: git
+  source: 
+    uri: https://github.com/shearn89/puppet-toughen.git
+
+- name: toughen-centos
+  type: docker-image
+  source:
+    repository: shearn89/toughen-centos
+
+jobs:
+- name: build-images
+  plan:
+    - get: ci-code
+    - put: centos-image
+      params:
+        build: toughen-ci/concourse/dockerfiles/centos-Dockerfile
+
+- name: run-tests
+  plan:
+  - get: puppet-code
+    trigger: true
+  - get: centos-image
+    passed: [build-images]
+  - task: run-rake
+    config:
+      platform: linux
+      image: centos-image
+      inputs:
+      - name: puppet-code
+      run:
+        path: bash
+        args: 
+        - "-c"
+        - cd puppet-toughen && bundle install && bundle exec rake test
