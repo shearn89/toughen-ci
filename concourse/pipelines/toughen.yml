@@ -21,7 +21,8 @@ jobs:
       trigger: true
     - put: toughen-centos
       params:
-        dockerfile: toughen-centos/concourse/dockerfiles/centos-Dockerfile
+        build: ci-code/concourse/dockerfiles
+        dockerfile: ci-code/concourse/dockerfiles/centos-Dockerfile
 
 - name: run-tests
   plan:
