@@ -12,7 +12,11 @@ resources:
 - name: toughen-centos
   type: docker-image
   source:
-      repository: 172.17.0.1:5000/toughen-centos
+      repository: 192.168.1.147:5000/toughen-centos
+      username: testuser
+      password: testpassword
+      insecure_registries: 
+        - 192.168.1.147:5000
 
 jobs:
 - name: build-images

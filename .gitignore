@@ -2,3 +2,5 @@ Gemfile.lock
 .kitchen
 .librarian
 Puppetfile.lock
+private
+auth
