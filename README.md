@@ -9,22 +9,16 @@ CI Environment files for testing puppet-toughen.
 
 Should be able to run a command locally/push a commit, and have various OS boxes spun up (starting with CentOS 6/7) and run the puppet modules against them.
 
+## Usage ##
+
+So far, there's a simple CI pipeline driven by [concourse](https://concourse.ci), however all it does is run `bundle exec rake test`, which is only of some use. Details of that in the `concourse` folder.
+
+The juicy stuff is in the `vagrant` folder. Run `vagrant up` and it'll start a box, copy scripts, setup r10k, and then apply puppet. All you have to do is wait and it should all just work(tm).
+
 ## Plan ##
 
-* Concourse-ci running in docker/container?
-* Watch repo
-* On change/interval:
-  * Spin up VM with puppet installed (centos/7 vagrant image)
-  * copy down repo
-  * run `puppet apply` a certain number of times
-  * if exit status is not stable, build fails.
-  * run inspec tests?
-  * teardown VM
+There was an older plan here, which is now scrapped. New plan!
 
-This would allow me to run the tests across multiple VMs.
-
-Could potentially deploy in the cloud? gcloud? 
-
-    gcloud compute instances create centos-7
-
-Concourse on [docker?](https://concourse.ci/docker-repository.html)
+* Something watches the `puppet-toughen` repo and also this repo.
+* On either change, runs `vagrant up`, which automatically deploys a **specific** branch of the toughen repo.
+* Sets build status to the exit code of `vagrant up` and then destroys the vagrant instance.
