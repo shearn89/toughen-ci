@@ -1,2 +1,3 @@
 .vagrant
 scripts/run-scap-scan.sh
+scripts/results.xml
