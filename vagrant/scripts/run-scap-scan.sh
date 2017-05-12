@@ -1,1 +1,1 @@
-sudo oscap xccdf eval --profile xccdf_org.ssgproject.content_profile_toughen --results results.xml --report /home/vagrant/reports/report-toughen.html /home/vagrant/scripts/toughen.xml
+sudo oscap xccdf eval --profile xccdf_com.shearn89_profile_toughen_centos --tailoring-file tailoring-xccdf.xml --results results.xml --report /home/vagrant/reports/report-toughen.html /home/vagrant/scripts/ssg-centos7-ds.xml
