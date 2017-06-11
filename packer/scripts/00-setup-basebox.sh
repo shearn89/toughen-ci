@@ -10,6 +10,6 @@ sudo sed -i '/UseDNS/ s/yes/no/' /etc/ssh/sshd_config
 sudo sed -i 's/#UseDNS/UseDNS/' /etc/ssh/sshd_config
 
 sudo mkdir -p /media/cdrom
-sudo mount /dev/cdrom /media/cdrom
+sudo mount /dev/sr1 /media/cdrom
 sudo sh /media/cdrom/VBoxLinuxAdditions.run
 sudo umount /media/cdrom

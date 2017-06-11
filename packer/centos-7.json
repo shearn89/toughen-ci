@@ -13,7 +13,7 @@
     "boot_command": "<up><tab> ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/kickstart.cfg<enter>",
     "disk_size": "100000",
     "guest_additions_mode": "attach",
-    "guest_additions_url": "",
+    "guest_additions_url": "file:///usr/share/virtualbox/VBoxGuestAdditions.iso",
     "http_directory": "http",
     "output_directory": "builds",
     "vboxmanage": [
